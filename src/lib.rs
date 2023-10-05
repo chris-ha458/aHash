@@ -13,7 +13,10 @@
 //! But this also means that different computers or computers using different versions of ahash may observe different
 //! hash values for the same input.
 #![cfg_attr(
-    all(feature = "std", any(feature = "compile-time-rng", feature = "runtime-rng", feature = "no-rng")),
+    all(
+        feature = "std",
+        any(feature = "compile-time-rng", feature = "runtime-rng", feature = "no-rng")
+    ),
     doc = r##"
 # Basic Usage
 AHash provides an implementation of the [Hasher] trait.
