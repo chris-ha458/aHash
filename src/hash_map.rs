@@ -44,9 +44,9 @@ where
     }
 }
 
-impl<K, V> Into<HashMap<K, V, crate::RandomState>> for AHashMap<K, V> {
-    fn into(self) -> HashMap<K, V, crate::RandomState> {
-        self.0
+impl<K, V> From<AHashMap<K, V>> for HashMap<K, V, crate::RandomState> {
+    fn from(val: AHashMap<K, V>) -> Self {
+        val.0
     }
 }
 
@@ -361,7 +361,7 @@ impl<'a, K, V, S> IntoIterator for &'a AHashMap<K, V, S> {
     type Item = (&'a K, &'a V);
     type IntoIter = hash_map::Iter<'a, K, V>;
     fn into_iter(self) -> Self::IntoIter {
-        (&self.0).iter()
+        (self.0).iter()
     }
 }
 
@@ -369,7 +369,7 @@ impl<'a, K, V, S> IntoIterator for &'a mut AHashMap<K, V, S> {
     type Item = (&'a K, &'a mut V);
     type IntoIter = hash_map::IterMut<'a, K, V>;
     fn into_iter(self) -> Self::IntoIter {
-        (&mut self.0).iter_mut()
+        (self.0).iter_mut()
     }
 }
 

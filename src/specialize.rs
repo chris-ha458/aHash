@@ -123,7 +123,7 @@ impl CallHasher for str {
     }
 }
 
-#[cfg(all(feature = "specialize"))]
+#[cfg(feature = "specialize")]
 impl CallHasher for String {
     #[inline]
     fn get_hash<H: Hash + ?Sized, B: BuildHasher>(value: &H, build_hasher: &B) -> u64 {

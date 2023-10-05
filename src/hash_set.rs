@@ -40,9 +40,9 @@ where
     }
 }
 
-impl<T> Into<HashSet<T, RandomState>> for AHashSet<T> {
-    fn into(self) -> HashSet<T, RandomState> {
-        self.0
+impl<T> From<AHashSet<T>> for HashSet<T, RandomState> {
+    fn from(val: AHashSet<T>) -> Self {
+        val.0
     }
 }
 
@@ -259,7 +259,7 @@ impl<'a, T, S> IntoIterator for &'a AHashSet<T, S> {
     type Item = &'a T;
     type IntoIter = hash_set::Iter<'a, T>;
     fn into_iter(self) -> Self::IntoIter {
-        (&self.0).iter()
+        (self.0).iter()
     }
 }
 
